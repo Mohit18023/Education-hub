@@ -1,0 +1,1109 @@
+{% csrf_token %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Complete Responsive Online Education Website Design</title>
+
+   <!-- swiper css link  -->
+   <!-- <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" /> -->
+
+   <!-- font awesome cdn link  -->
+   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> -->
+
+   <!-- custom css file link  -->
+   
+   <!-- <link rel="stylesheet" href=" style.css"> -->
+
+</head>
+<style>
+   @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+
+:root{
+   --green:#00E77F;
+   --white:#fff;
+   --light-white:#aaa;
+   --black:#3d3d3d;
+   --light-bg:#4b4b4b;
+}
+
+*{
+   font-family: 'Rubik', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none;
+   transition: .2s linear;
+   text-transform: capitalize;
+}
+
+*::selection{
+   background-color: var(--white);
+   color:var(--black);
+}
+
+html{
+   font-size: 62.5%;
+   overflow-x: hidden;
+   scroll-behavior: smooth;
+   scroll-padding-top: 8rem;
+}
+
+::-webkit-scrollbar{
+   height: .5rem;
+   width: 1rem;
+}
+
+::-webkit-scrollbar-track{
+   background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+   background-color: var(--green);
+   border-radius: 5rem;
+}
+
+body{
+   background-color: var(--black);
+}
+
+section{
+   max-width: 1200px;
+   margin:0 auto;
+   padding:2rem;
+}
+
+.btn{
+   display: inline-block;
+   margin-top: 1rem;
+   border-radius: 5rem;
+   background-color: var(--light-bg);
+   cursor: pointer;
+   color:var(--white);
+   font-size: 1.8rem;
+   padding:1rem 3rem;
+}
+
+.btn:hover{
+   background-color: var(--white);
+   color:var(--black);
+}
+
+.heading{
+   margin-bottom: 2.5rem;
+   text-align: center;
+   font-size: 4rem;
+   color:var(--white);
+   text-transform: uppercase;
+}
+
+.heading span{
+   color:var(--green);
+   text-transform: uppercase;
+}
+
+.header{
+   position: fixed;
+   top:0; left:0; right:0;
+   z-index: 1000;
+   background-color: var(--light-bg);
+}
+
+.header .flex{
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.header .flex .logo{
+   font-size: 2.5rem;
+   color:var(--white);
+}
+
+.header .flex .navbar a{
+   margin-left: 2rem;
+   color:var(--light-white);
+   font-size: 2rem;
+}
+
+.header .flex .navbar a:hover{
+   color:var(--green);
+}
+
+#menu-btn{
+   cursor: pointer;
+   color:var(--white);
+   font-size: 2.5rem;
+   display: none;
+}
+
+.home{
+   margin-top: 6rem;
+}
+
+.home .row{
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap-reverse;
+   gap:1.5rem;
+}
+
+.home .row .content{
+   flex:1 1 40rem;
+   text-align: center;
+}
+
+.home .row .image{
+   flex:1 1 40rem;
+}
+
+.home .row .image img{
+   width: 100%;
+}
+
+.home .row .content h3{
+   margin-bottom: 1rem;
+   font-size: 10rem;
+   color:var(--white);
+   line-height: 1;
+}
+
+.home .row .content h3 span{
+   color:var(--green);
+}
+
+.count .box-container{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+   gap:1.5rem;
+   align-items: flex-start;
+}
+
+.count .box-container .box{
+   background-color: var(--light-bg);
+   border-radius: .5rem;
+   padding:2rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap:2.5rem;
+}
+
+.count .box-container .box i{
+   font-size: 5rem;
+   color:var(--green);
+}
+
+.count .box-container .box .content h3{
+   font-size: 2rem;
+   color:var(--white);
+   margin-bottom: .5rem;
+}
+
+.count .box-container .box .content p{
+   font-size: 1.6rem;
+   color:var(--light-white);
+} 
+
+.about .row{
+   display: flex;
+   align-items: center;
+   gap: 1.5rem;
+   flex-wrap: wrap;
+}
+
+.about .row .image{
+   flex:1 1 40rem;
+}
+
+.about .row .image img{
+   width: 100%;
+}
+
+.about .row .content{
+   text-align: center;
+   flex:1 1 40rem;
+}
+
+.about .row .content h3{
+   font-size: 3rem;
+   color:var(--white);
+}
+
+.about .row .content p{
+   padding:1rem 0;
+   line-height: 2;
+   font-size: 1.6rem;
+   color:var(--light-white);
+}
+
+.courses .slide{
+   background-color: var(--light-bg);
+   border-radius: .5rem;
+   text-align: center; 
+   padding:2rem;
+   margin-bottom: 4rem;
+   user-select: none;
+}
+
+.courses .slide img{
+   height: 25rem;
+   width: 100%;
+}
+
+.courses .slide h3{
+   margin:1.5rem 0;
+   font-size: 2rem;
+   color:var(--white);
+}
+
+.courses .slide p{
+   line-height: 2;
+   font-size: 1.6rem;
+   color:var(--light-white);
+}
+
+.swiper-pagination-bullet{
+   background-color: var(--white);
+}
+ 
+.swiper-pagination-bullet-active{
+   background-color: var(--green);
+}
+
+.teachers .slide{
+   position: relative;
+   overflow: hidden;
+   margin-bottom: 4rem;
+   user-select: none;
+}
+
+.teachers .slide img{
+   height: 55rem;
+   width: 100%;
+   object-fit: cover;
+   border-radius: .5rem;
+}
+
+.teachers .slide h3{
+   margin-top: 1.5rem;
+   font-size: 2rem;
+   text-align: center;
+   color:var(--white);
+}
+
+.teachers .slide .share{
+   position: absolute;
+   top:1rem; left:-10rem;
+}
+
+.teachers .slide:hover .share{
+   left: 2rem;
+}
+
+.teachers .slide .share a{
+   display: block;
+   margin-top: 1rem;
+   height: 4.5rem;
+   width: 4.5rem;
+   line-height: 4.5rem;
+   border-radius: .5rem;
+   background-color: var(--white);
+   color:var(--black);
+   text-align: center;
+   font-size: 2rem;
+}
+
+.teachers .slide .share a:hover{
+   background-color: var(--green);
+   color:var(--white);
+}
+
+.reviews-slider .slide{
+   border-radius: .5rem;
+   background-color: var(--light-bg);
+   padding:2rem;
+   margin-bottom: 4rem;
+   user-select: none;
+}
+
+.reviews-slider .slide p{
+   line-height: 2;
+   font-size: 1.6rem;
+   color:var(--light-white);
+}
+
+.reviews-slider .slide .user{
+   display: flex;
+   align-items: center;
+   gap:1.5rem;
+   margin-top: 1.5rem;
+}
+
+.reviews-slider .slide .user img{
+   height: 7rem;
+   width: 7rem;
+   border-radius: 50%;
+   object-fit: cover;
+}
+
+.reviews-slider .slide .user h3{
+   font-size: 2rem;
+   color:var(--white);
+   margin-bottom: .7rem;
+}
+
+.reviews-slider .slide .user .stars i{
+   font-size: 1.5rem;
+   color:var(--green);
+}
+
+.contact .row{
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   gap:1.5rem;
+}
+
+.contact .row .image{
+   flex: 1 1 40rem;
+}
+
+.contact .row .image img{
+   width: 100%;
+}
+
+.contact .row form{
+   flex:1 1 40rem;
+}
+
+.contact .row form .box{
+   width: 100%;
+   margin-top: 1rem;
+   margin-bottom: 2rem;
+   border-radius: .5rem;
+   background-color: var(--light-bg);
+   font-size: 1.8rem;
+   color:var(--white);
+   padding:1.4rem;
+   text-transform: none;
+}
+
+.contact .row form span{
+   font-size: 1.6rem;
+   color:var(--light-white);
+}
+
+.contact .row form .radio{
+   margin-top: 2rem;
+   margin-bottom: 1rem;
+}
+
+.contact .row form .radio label{
+   font-size: 1.6rem;
+   color:var(--light-white);
+   margin-left: .5rem;
+   cursor: pointer;
+}
+
+.contact .row form .radio #female{
+   margin-left: 2rem;
+}
+
+.contact .row form .radio input{
+   appearance: none;
+   height: 2rem;
+   width: 2rem;
+   background-color: var(--light-white);
+   cursor: pointer;
+}
+
+.contact .row form .radio input:checked{
+   background-color: var(--green);
+   border-radius: 5rem;
+}
+
+.contact .row form .radio #male:checked ~ label[for="male"]{
+   color:var(--green);
+}
+
+.contact .row form .radio #female:checked ~ label[for="female"]{
+   color:var(--green);
+}
+
+.footer{
+   background-color: var(--light-bg);
+   text-align: center;
+   /* padding-bottom: 7rem; */
+}
+
+.footer .share a{
+   margin:0 .3rem;
+   height: 4.5rem;
+   width: 4.5rem;
+   line-height: 4.5rem;
+   border-radius: 50%;
+   font-size: 2rem;
+   color:var(--white);
+   background-color: var(--black);;
+}
+
+.footer .share a:hover{
+   background-color: var(--green);
+}
+
+.footer .credit{
+   margin-top: 2.5rem;
+   padding:1.5rem;
+   padding-top: 2.5rem;
+   border-top: .1rem solid var(--light-white);
+   font-size: 2rem;
+   color:var(--light-white);
+}
+
+.footer .credit span{
+   color:var(--green);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* media queries  */
+
+@media (max-width:991px){
+
+   html{
+      font-size: 55%;
+   }
+
+   .home .row .content h3{
+      font-size: 8rem;
+   }
+
+}
+
+@media (max-width:768px){
+
+   #menu-btn{
+      display: inline-block;
+   }
+
+   #menu-btn.fa-times{
+      transform: rotate(180deg);
+   }
+
+   .header .flex .navbar{
+      position: absolute;
+      top:99%; left:0; right:0;
+      border-top: .1rem solid var(--light-white);
+      border-bottom: .1rem solid var(--light-white);
+      background-color: var(--light-bg);
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+   }
+
+   .header .flex .navbar.active{
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+   }
+   
+   .header .flex .navbar a{
+      display: block;
+      margin:2rem;
+   }
+
+   .home .row .content h3{
+      font-size: 6rem;
+   }
+
+}
+
+@media (max-width:450px){
+
+   html{
+      font-size: 50%;
+   }
+   
+   .home .row .content h3{
+      font-size: 5rem;
+   }
+
+   .heading{
+      font-size: 3rem;
+   }
+
+}
+</style>
+<body>
+
+   <!-- header section starts  -->
+
+   <header class="header">
+
+      <section class="flex">
+
+         <a href="#home" class="logo">education hub</a>
+
+         <nav class="navbar">
+            <a href="/index.html">home</a>
+            <a href="/index.html#about">about</a>
+            <a href="/index.html#courses">courses</a>
+            <a href="#teachers">notes</a>
+            <a href="/index.html#reviews">reviews</a>
+            <a href="http://127.0.0.1:8000/contact/">contact</a>
+         </nav>
+
+         <div id="menu-btn" class="fas fa-bars"></div>
+
+      </section>
+
+   </header>
+
+   <!-- header section ends -->
+
+   <!-- home section starts  -->
+
+   <!-- <section class="home" id="home">
+
+      <div class="row">
+
+         <div class="content">
+            <h3>online <span>education</span></h3>
+            <a href="#contact" class="btn">contact us</a>
+         </div>
+
+         <div class="image">
+            <img src="images/homg-img.svg" alt="">
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- home section ends -->
+
+   <!-- couter section stars  -->
+
+   <!-- <section class="count">
+
+      <div class="box-container">
+
+         <div class="box">
+            <i class="fas fa-graduation-cap"></i>
+            <div class="content">
+               <h3>150+</h3>
+               <p>courses</p>
+            </div>
+         </div>
+
+         <div class="box">
+            <i class="fas fa-user-graduate"></i>
+            <div class="content">
+               <h3>1300+</h3>
+               <p>students</p>
+            </div>
+         </div>
+
+         <div class="box">
+            <i class="fas fa-chalkboard-user"></i>
+            <div class="content">
+               <h3>80+</h3>
+               <p>teachers</p>
+            </div>
+         </div>
+
+         <div class="box">
+            <i class="fas fa-face-smile"></i>
+            <div class="content">
+               <h3>100%</h3>
+               <p>satisfaction</p>
+            </div>
+         </div>
+
+      </div>
+
+   </section>
+
+    couter section ends -->
+
+   <!-- about section starts  -->
+
+   <!-- <section class="about" id="about">
+
+      <div class="row">
+
+         <div class="image">
+            <img src="images/about-img.svg" alt="">
+         </div>
+
+         <div class="content">
+            <h3>why choose us?</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quibusdam magni error, aut enim rerum?
+            </p>
+            <a href="#contact" class="btn">contact us</a>
+         </div>
+
+      </div>
+
+   </section> -->
+
+   <!-- about section ends -->
+
+   <!-- courses section starts  
+
+   <section class="courses" id="courses">
+
+      <h1 class="heading">our <span>courses</span></h1>
+
+      <div class="swiper course-slider">
+
+         <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+               <img src="images/course-1.svg" alt="">
+               <h3><a href="www.google.com" style="color: azure;">WEB DEVELOPMENT</a></h3>
+               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique, repellat!</p>
+            </div>
+
+            <div class="swiper-slide slide">
+               <img src="images/course-2.svg" alt="">
+               <h3>digital marketing</h3>
+               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique, repellat!</p>
+            </div>
+
+            <div class="swiper-slide slide">
+               <img src="images/course-3.svg" alt="">
+               <h3>science and biology</h3>
+               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique, repellat!</p>
+            </div>
+
+            <div class="swiper-slide slide">
+               <img src="images/course-4.svg" alt="">
+               <h3>graphic design</h3>
+               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique, repellat!</p>
+            </div>
+
+            <div class="swiper-slide slide">
+               <img src="images/course-5.svg" alt="">
+               <h3>teaching</h3>
+               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique, repellat!</p>
+            </div>
+
+            <div class="swiper-slide slide">
+               <img src="images/course-6.svg" alt="">
+               <h3>engineering</h3>
+               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique, repellat!</p>
+            </div>
+
+         </div>
+
+         <div class="swiper-pagination"></div>
+
+      </div>
+
+   </section> -->
+
+   <!-- courses section ends -->
+
+   <!-- teachers section starts  -->
+
+   <!-- <section class="teachers" id="teachers">
+
+   <h1 class="heading">expert <span>tutors</span></h1>
+
+   <div class="swiper teachers-slider">
+
+      <div class="swiper-wrapper">
+
+         <div class="swiper-slide slide">
+            <img src="images/tutor-1.png" alt="">
+            <div class="share">
+               <a href="#" class="fab fa-facebook-f"></a>
+               <a href="#" class="fab fa-twitter"></a>
+               <a href="#" class="fab fa-instagram"></a>
+               <a href="#" class="fab fa-linkedin"></a>
+            </div>
+            <h3>john deo</h3>
+         </div>
+         
+         <div class="swiper-slide slide">
+            <img src="images/tutor-2.png" alt="">
+            <div class="share">
+               <a href="#" class="fab fa-facebook-f"></a>
+               <a href="#" class="fab fa-twitter"></a>
+               <a href="#" class="fab fa-instagram"></a>
+               <a href="#" class="fab fa-linkedin"></a>
+            </div>
+            <h3>john deo</h3>
+         </div>
+
+         <div class="swiper-slide slide">
+            <img src="images/tutor-3.png" alt="">
+            <div class="share">
+               <a href="#" class="fab fa-facebook-f"></a>
+               <a href="#" class="fab fa-twitter"></a>
+               <a href="#" class="fab fa-instagram"></a>
+               <a href="#" class="fab fa-linkedin"></a>
+            </div>
+            <h3>john deo</h3>
+         </div>
+
+         <div class="swiper-slide slide">
+            <img src="images/tutor-4.png" alt="">
+            <div class="share">
+               <a href="#" class="fab fa-facebook-f"></a>
+               <a href="#" class="fab fa-twitter"></a>
+               <a href="#" class="fab fa-instagram"></a>
+               <a href="#" class="fab fa-linkedin"></a>
+            </div>
+            <h3>john deo</h3>
+         </div>
+
+         <div class="swiper-slide slide">
+            <img src="images/tutor-5.png" alt="">
+            <div class="share">
+               <a href="#" class="fab fa-facebook-f"></a>
+               <a href="#" class="fab fa-twitter"></a>
+               <a href="#" class="fab fa-instagram"></a>
+               <a href="#" class="fab fa-linkedin"></a>
+            </div>
+            <h3>john deo</h3>
+         </div>
+
+         <div class="swiper-slide slide">
+            <img src="images/tutor-6.png" alt="">
+            <div class="share">
+               <a href="#" class="fab fa-facebook-f"></a>
+               <a href="#" class="fab fa-twitter"></a>
+               <a href="#" class="fab fa-instagram"></a>
+               <a href="#" class="fab fa-linkedin"></a>
+            </div>
+            <h3>john deo</h3>
+         </div>
+
+      </div>
+
+      <div class="swiper-pagination"></div>
+
+   </div>
+
+</section> -->
+
+   <!-- teachers section ends -->
+
+   <!-- reviews section starts  -->
+
+   <!-- <section class="reviews" id="reviews">
+
+      <h1 class="heading"> student's <span>reviews</span></h1>
+
+      <div class="swiper reviews-slider">
+
+         <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
+                  numquam consequatur velit autem distinctio possimus culpa!</p>
+               <div class="user">
+                  <img src="images/pic-1.png" alt="">
+                  <div class="user-info">
+                     <h3>john deo</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
+                  numquam consequatur velit autem distinctio possimus culpa!</p>
+               <div class="user">
+                  <img src="images/pic-2.png" alt="">
+                  <div class="user-info">
+                     <h3>john deo</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
+                  numquam consequatur velit autem distinctio possimus culpa!</p>
+               <div class="user">
+                  <img src="images/pic-3.png" alt="">
+                  <div class="user-info">
+                     <h3>john deo</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
+                  numquam consequatur velit autem distinctio possimus culpa!</p>
+               <div class="user">
+                  <img src="images/pic-4.png" alt="">
+                  <div class="user-info">
+                     <h3>john deo</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
+                  numquam consequatur velit autem distinctio possimus culpa!</p>
+               <div class="user">
+                  <img src="images/pic-5.png" alt="">
+                  <div class="user-info">
+                     <h3>john deo</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="swiper-slide slide">
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
+                  numquam consequatur velit autem distinctio possimus culpa!</p>
+               <div class="user">
+                  <img src="images/pic-6.png" alt="">
+                  <div class="user-info">
+                     <h3>john deo</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+
+         <div class="swiper-pagination"></div>
+
+      </div>
+
+   </section> --> -->
+
+   <!-- reviews section ends -->
+
+   <!-- contact section starts  -->
+
+   <section class="contact" id="contact">
+
+      <h1 class="heading"><span>contact</span> us</h1>
+
+      <div class="row">
+         
+         <div id="post">
+            
+            <div class="image">
+               <img src="{% static 'contact-img.svg' %}" alt="">
+            </div>
+         </div>
+
+         <form action="" method="post">
+            <span>your name</span>
+            <input type="text" required placeholder="enter your full name" maxlength="50" name="name" class="box">
+            <span>your email</span>
+            <input type="email" required placeholder="enter your valid email" maxlength="50" name="email" class="box">
+            <span>your number</span>
+            <input type="number" required placeholder="enter your valid number" max="9999999999" min="0" name="number"
+               class="box" onkeypress="if(this.value.length == 10) return false;">
+            <span>select course</span>
+            <select name="couses" class="box" required>
+               <option value="" disabled selected>select the course --</option>
+               <option value="web developement">web developement</option>
+               <option value="science and biology">science and biology</option>
+               <option value="engineering">engineering</option>
+               <option value="digital marketing">digital marketing</option>
+               <option value="graphic design">graphic design</option>
+               <option value="teaching">teaching</option>
+               <option value="social studies">social studies</option>
+               <option value="data analysis">data analysis</option>
+               <option value="artificial intelligence">artificial intelligence</option>
+            </select>
+            <span>select gender</span>
+            <div class="radio">
+               <input type="radio" name="gender" value="male" id="male">
+               <label for="male">male</label>
+               <input type="radio" name="gender" value="female" id="female">
+               <label for="female">female</label>
+            </div>
+            <input type="submit" value="send message" class="btn" name="send">
+         </form>
+
+      </div>
+
+   </section>
+
+   <!-- contact section ends -->
+
+   <!-- footer section starts  -->
+
+   <footer class="footer">
+
+      <section>
+
+         <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-youtube"></a>
+         </div>
+
+         <div class="credit">&copy; copyright @ 2022 by <span> Mohit choudhary</span> | all rights reserved!</div>
+
+      </section>
+
+   </footer>
+
+   <!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- swiper js link  -->
+   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+   <!-- custom js file link  -->
+   <script>
+      let menuBtn = document.querySelector('#menu-btn');
+      let navbar = document.querySelector('.header .flex .navbar');
+
+      menuBtn.onclick = () => {
+         menuBtn.classList.toggle('fa-times');
+         navbar.classList.toggle('active');
+      }
+
+      window.onscroll = () => {
+         menuBtn.classList.remove('fa-times');
+         navbar.classList.remove('active');
+      }
+
+      var swiper = new Swiper(".course-slider", {
+         spaceBetween: 20,
+         grabCursor: true,
+         loop: true,
+         pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+         },
+         breakpoints: {
+            540: {
+               slidesPerView: 1,
+            },
+            768: {
+               slidesPerView: 2,
+            },
+            1024: {
+               slidesPerView: 3,
+            },
+         },
+      });
+
+      var swiper = new Swiper(".teachers-slider", {
+         spaceBetween: 20,
+         grabCursor: true,
+         loop: true,
+         pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+         },
+         breakpoints: {
+            540: {
+               slidesPerView: 1,
+            },
+            768: {
+               slidesPerView: 2,
+            },
+            1024: {
+               slidesPerView: 3,
+            },
+         },
+      });
+
+      var swiper = new Swiper(".reviews-slider", {
+         spaceBetween: 20,
+         grabCursor: true,
+         loop: true,
+         pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+         },
+         breakpoints: {
+            540: {
+               slidesPerView: 1,
+            },
+            768: {
+               slidesPerView: 2,
+            },
+            1024: {
+               slidesPerView: 3,
+            },
+         },
+      });
+   </script>
+
+</body>
+
+</html>
