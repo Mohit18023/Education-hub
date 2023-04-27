@@ -6,7 +6,7 @@ pwd = ''
 def loginaction(request):
     global em,pwd
     if request.method=="POST":
-        m=sql.connect(host="localhost",user="root",passwd="mohit1054",database='education_hub')
+        m=sql.connect(host="localhost",user="root",passwd="mohit1054#8690038779",database='education_hub')
         cursor=m.cursor()
         d=request.POST
         for key,value in d.items():
